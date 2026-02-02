@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ΦΕΚ Άρθρα - Απλή Εξήγηση</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            background: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        .features {
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            text-align: left;
+        }
+
+        .feature {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .feature-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .feature-desc {
+            font-size: 14px;
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 30px;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            }
+
+            .container {
+                background: #0f3460;
+                color: white;
+            }
+
+            h1, .feature-title {
+                color: white;
+            }
+
+            .subtitle, .feature-desc {
+                color: #a8b2d1;
+            }
+
+            .feature {
+                background: #1a1a2e;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📰 ΦΕΚ Άρθρα</h1>
+        <p class="subtitle">
+            Νόμοι και αποφάσεις της κυβέρνησης εξηγημένοι με απλά λόγια
+        </p>
+
+        <a href="viewer.html" class="cta-button">
+            Διάβασε τα Άρθρα →
+        </a>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🪙</div>
+                <div class="feature-title">Κρυπτονομίσματα</div>
+                <div class="feature-desc">Νέος νόμος για αυτόματη ανταλλαγή πληροφοριών</div>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🏦</div>
+                <div class="feature-title">Τραπεζικοί Λογαριασμοί</div>
+                <div class="feature-desc">Λογαριασμοί στο εξωτερικό - τι αλλάζει</div>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">⚠️</div>
+                <div class="feature-title">Οικοδομικές Άδειες</div>
+                <div class="feature-desc">Επείγουσα προθεσμία ~22 Φεβρουαρίου</div>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🎻</div>
+                <div class="feature-title">Προσλήψεις ΚΟΑ</div>
+                <div class="feature-desc">3 μόνιμες θέσεις μουσικών</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
