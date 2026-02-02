@@ -18,6 +18,11 @@
             padding: 0;
         }
 
+        html {
+            /* Smooth scrolling */
+            scroll-behavior: smooth;
+        }
+
         /* Light Mode (Default) */
         :root {
             --bg-primary: #f6f8fa;
@@ -97,6 +102,8 @@
             color: var(--text-primary);
             padding: 20px;
             transition: background-color 0.3s ease, color 0.3s ease;
+            /* Smooth scrolling on mobile */
+            -webkit-overflow-scrolling: touch;
         }
 
         .container {
@@ -169,6 +176,9 @@
             font-weight: 500;
             transition: all 0.2s;
             line-height: 1.4;
+            /* Better touch targets */
+            min-height: 44px;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .article-list button .title {
@@ -287,23 +297,179 @@
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
             .container {
                 grid-template-columns: 1fr;
+                gap: 10px;
             }
 
             .sidebar {
                 position: relative;
                 top: 0;
+                padding: 15px;
+            }
+
+            .sidebar h2 {
+                font-size: 18px;
+                margin-bottom: 15px;
+            }
+
+            .sidebar p {
+                font-size: 13px;
+                margin-bottom: 15px;
+            }
+
+            .date-header {
+                font-size: 12px;
+            }
+
+            .article-list button {
+                padding: 14px;
+                font-size: 14px;
+            }
+
+            .article-list button .title {
+                font-size: 14px;
+            }
+
+            .article-list button .description {
+                font-size: 12px;
             }
 
             .content {
-                padding: 20px;
+                padding: 20px 15px;
+            }
+
+            .markdown-body {
+                font-size: 15px;
+            }
+
+            .markdown-body h1 {
+                font-size: 24px;
+            }
+
+            .markdown-body h2 {
+                font-size: 20px;
+            }
+
+            .markdown-body h3 {
+                font-size: 18px;
+            }
+
+            .markdown-body table {
+                font-size: 14px;
+            }
+
+            .markdown-body table th,
+            .markdown-body table td {
+                padding: 8px 6px;
+            }
+
+            /* Better links on mobile */
+            .markdown-body a {
+                word-break: break-word;
+            }
+
+            /* Better lists on mobile */
+            .markdown-body ul,
+            .markdown-body ol {
+                padding-left: 20px;
+            }
+
+            /* Better blockquotes on mobile */
+            .markdown-body blockquote {
+                padding: 10px 15px;
+                margin: 15px 0;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+
+            .sidebar {
+                padding: 12px;
+            }
+
+            .content {
+                padding: 15px 12px;
+            }
+
+            .markdown-body {
+                font-size: 14px;
+            }
+
+            .markdown-body h1 {
+                font-size: 22px;
+            }
+
+            .markdown-body h2 {
+                font-size: 18px;
+            }
+
+            /* Make tables scrollable on very small screens */
+            .markdown-body table {
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px var(--shadow);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px var(--shadow);
+        }
+
+        .back-to-top:active {
+            transform: translateY(0);
+        }
+
+        @media (min-width: 769px) {
+            .back-to-top {
+                display: none;
             }
         }
 
         /* Print Styles */
         @media print {
             .sidebar {
+                display: none;
+            }
+
+            .back-to-top {
                 display: none;
             }
 
@@ -335,6 +501,11 @@
             </div>
         </main>
     </div>
+
+    <!-- Back to Top Button (Mobile only) -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        ↑
+    </button>
 
     <script>
         // Articles grouped by date (dd-mm-yyyy)
@@ -489,6 +660,24 @@
             if (articles.length > 0) {
                 loadArticle(articles[0].file);
             }
+        });
+
+        // Back to Top button functionality
+        const backToTopButton = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
 
         // Handle URL hash navigation (optional - for direct links)

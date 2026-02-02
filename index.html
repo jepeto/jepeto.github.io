@@ -92,7 +92,7 @@
             color: #666;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             .container {
                 padding: 40px 30px;
             }
@@ -101,8 +101,63 @@
                 font-size: 36px;
             }
 
+            .subtitle {
+                font-size: 18px;
+            }
+
             .features {
                 grid-template-columns: 1fr;
+            }
+
+            .cta-button {
+                padding: 16px 35px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+                margin-bottom: 30px;
+            }
+
+            .cta-button {
+                padding: 14px 30px;
+                font-size: 15px;
+                width: 100%;
+            }
+
+            .features {
+                margin-top: 40px;
+                gap: 15px;
+            }
+
+            .feature {
+                padding: 15px;
+            }
+
+            .feature-icon {
+                font-size: 28px;
+            }
+
+            .feature-title {
+                font-size: 15px;
+            }
+
+            .feature-desc {
+                font-size: 13px;
             }
         }
 
